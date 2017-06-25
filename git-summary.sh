@@ -61,6 +61,13 @@ function git_summary() {
 }
 
 echo
+echo "~/src"
+echo
+for d in ~/src/* ; do
+    git_summary $d
+done
+
+echo
 echo "~/Artella/repos"
 echo
 for d in ~/Artella/repos/* ; do
