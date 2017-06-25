@@ -42,6 +42,9 @@ function git_summary() {
         elif [[ "$git_status" =~ nothing\ to\ commit ]]; then
             statusColour=$GREEN
             status='clean'
+        elif [[ "$git_status" =~ HEAD\ detached ]]; then
+            statusColour=$RED
+            status='detached'
         elif [[ "$git_status" =~ untracked ]]; then
             statusColour=$RED
             status='untracked'
@@ -55,6 +58,8 @@ function git_summary() {
         fi
 
         if [[ "$git_status" =~ On\ branch\ ([^[:space:]]+) ]]; then
+            branch=${BASH_REMATCH[1]}
+        elif [[ "$git_status" =~ HEAD\ detached\ at\ ([^[:space:]]+) ]]; then
             branch=${BASH_REMATCH[1]}
         else
             branch="(`git describe --all --contains --abbrev=4 HEAD 2> /dev/null || echo HEAD`)"
