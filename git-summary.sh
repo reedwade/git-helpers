@@ -36,6 +36,9 @@ function git_summary() {
         if [[ "$git_status" =~ behind ]]; then
             statusColour=$CYAN
             status='behind'
+        elif [[ "$git_status" =~ ahead ]]; then
+            statusColour=$CYAN
+            status='ahead'
         elif [[ "$git_status" =~ nothing\ to\ commit ]]; then
             statusColour=$GREEN
             status='clean'
