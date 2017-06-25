@@ -1,0 +1,55 @@
+#!/bin/bash
+#
+# Git Summary - a pretty overview of a set of git repos
+#
+# MIT License terms (see accompanying license file)
+# Copyright (c) 2017 Reed Wade - <reed@typist.geek.nz>
+#
+
+#
+# inspired and bits of logic by https://github.com/Andrew565/dotfiles
+#
+
+RED="\033[31m"
+PINK="\033[1;31m"
+MUSTARD="\033[33m"
+YELLOW="\033[1;33m"
+GREEN="\033[32m"
+PURPLE="\033[35m"
+WHITE="\033[1;37m"
+CYAN="\033[1;36m"
+RESET="\033[m"
+
+
+function git_fetch_origin() {
+    local shortDirname
+    shortDirname=$(basename $1)
+
+    if [ -e $1/.git ]; then
+        cd $1
+        printf "    %s -- " "${shortDirname}"
+        git fetch --all
+    fi
+}
+
+echo
+echo "~/src"
+echo
+for d in ~/src/* ; do
+    git_fetch_origin $d
+done
+
+echo
+echo "~/Artella/repos"
+echo
+for d in ~/Artella/repos/* ; do
+    git_fetch_origin $d
+done
+
+echo
+echo "~/go/src/github.com/AnimationMentor"
+echo
+for d in ~/go/src/github.com/AnimationMentor/* ; do
+    git_fetch_origin $d
+done
+echo
