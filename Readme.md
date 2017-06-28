@@ -9,7 +9,10 @@ Mostly bash scripts.
 
 Emits a table of info about a pile of local git repos.
 
-The paths are embedded in the script right now.
+Repository paths are read from an environment variable: `REPOPATHS`.  Export this variable via one of your local dot files like so: 
+```
+export REPOPATHS=~/Repos/github.com/AnimationMentor:~/Repos/github.com/dkujawski
+```
 
 ![screen shot showing gp-summary](https://raw.githubusercontent.com/reedwade/my-git-helpers/master/gp-summary.png)
 
