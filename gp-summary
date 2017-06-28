@@ -68,24 +68,13 @@ function git_summary() {
     fi
 }
 
-echo
-echo "~/src"
-echo
-for d in ~/src/* ; do
-    git_summary $d
-done
-
-echo
-echo "~/Artella/repos"
-echo
-for d in ~/Artella/repos/* ; do
-    git_summary $d
-done
-
-echo
-echo "~/go/src/github.com/AnimationMentor"
-echo
-for d in ~/go/src/github.com/AnimationMentor/* ; do
-    git_summary $d
+for repoPath in ${REPOPATHS//:/ }
+do
+    echo
+    echo $repoPath
+    echo
+    for d in ${repoPath}/* ; do
+        git_summary $d
+    done
 done
 echo
