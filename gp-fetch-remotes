@@ -28,7 +28,7 @@ function git_fetch_origin() {
     if [ -e $1/.git ]; then
         cd $1
         printf "    %s -- " "${shortDirname}"
-        git fetch --all
+        git fetch --all --prune
     fi
 }
 
