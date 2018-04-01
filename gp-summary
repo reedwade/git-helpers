@@ -74,7 +74,9 @@ do
     echo $repoPath
     echo
     for d in ${repoPath}/* ; do
-        git_summary $d
+    	if [[ -d $d ]]; then
+	        git_summary $d
+    	fi
     done
 done
 echo
